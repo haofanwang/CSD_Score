@@ -3,7 +3,7 @@ import torch.nn as nn
 from torchvision import transforms
 import torchvision.transforms.functional as F
 
-from CSD.model import CSD_CLIP, convert_state_dict
+from model import CSD_CLIP, convert_state_dict
 
 from PIL import Image
 
