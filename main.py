@@ -27,11 +27,11 @@ preprocess = transforms.Compose([
             ])
 
 # style image
-image = preprocess(Image.open("1.jpg")).unsqueeze(0).to("cuda")
+image = preprocess(Image.open("examples/11.jpg")).unsqueeze(0).to("cuda")
 _, content_output, style_output = model(image)
 
 # another style image
-image1 = preprocess(Image.open("4.jpg")).unsqueeze(0).to("cuda")
+image1 = preprocess(Image.open("examples/11.png")).unsqueeze(0).to("cuda")
 _, content_output1, style_output1 = model(image1)
 
 sim = style_output@style_output1.T
