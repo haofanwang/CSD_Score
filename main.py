@@ -27,7 +27,7 @@ preprocess = transforms.Compose([
             ])
 
 # style image
-image = preprocess(Image.open("examples/11.jpg")).unsqueeze(0).to("cuda")
+image = preprocess(Image.open("examples/10.jpg")).unsqueeze(0).to("cuda")
 _, content_output, style_output = model(image)
 
 # another style image
