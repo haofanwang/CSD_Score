@@ -87,15 +87,21 @@ def init_weights(m): # TODO: do we need init for layernorm?
 
 class CSD_CLIP(nn.Module):
     """backbone + projection head"""
-    def __init__(self, name='vit_large',content_proj_head='default'):
+    def __init__(self, name='vit_large',content_proj_head='default', model_path=None):
         super(CSD_CLIP, self).__init__()
         self.content_proj_head = content_proj_head
         if name == 'vit_large':
-            clipmodel, _ = clip.load("models/ViT-L-14.pt")
+            if model_path is None:
+                clipmodel, _ = clip.load("models/ViT-L-14.pt")
+            else:
+                clipmodel, _ = clip.load(model_path)
             self.backbone = clipmodel.visual
             self.embedding_dim = 1024
         elif name == 'vit_base':
-            clipmodel, _ = clip.load("ViT-B/16")
+            if model_path is None:
+                clipmodel, _ = clip.load("ViT-B/16")
+            else:
+                clipmodel, _ = clip.load(model_path)
             self.backbone = clipmodel.visual
             self.embedding_dim = 768 
             self.feat_dim = 512
